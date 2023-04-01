@@ -1,55 +1,35 @@
-export interface IItem {
+export interface Item {
   readonly name: string,
   readonly sellIn: number,
   readonly quality: number,
   update(): void,
 }
 
-export class Item {
-  #name: string;
-  #sellIn: SellIn;
-  #quality: Quality;
+export class Name {
+  #AGED_BRIE = 'Aged Brie';
+  #BACKSTAGE_TICKET = 'Backstage passes to a TAFKAL80ETC concert';
+  #SULFURAS = 'Sulfuras, Hand of Ragnaros';
 
-  constructor( name: string, sellIn: number, quality: number ) {
-    this.#name = name
-    this.#sellIn = new SellIn( sellIn )
-    this.#quality = new Quality( quality )
+  #value: string
+
+  constructor( value: string ) {
+    this.#value = value
   }
 
-  /**
-   * Updates the state due to a day passed.
-   */
-  update(): void {
-    this.#decrementSellIn();
-    this.#decrementQuality();
+  get value(): string {
+    return this.#value;
   }
 
-  #decrementSellIn = () => {
-    this.#sellIn = this.#sellIn.decrement()
+  isAgedBrie(): boolean {
+    return this.#AGED_BRIE === this.#value
   }
 
-  #decrementQuality = () => {
-    this.#quality = this.#quality.decrement()
+  isSulfuras(): boolean {
+    return this.#SULFURAS === this.#value
   }
 
-  get name(): string {
-    return this.#name
-  }
-
-  get sellIn(): number {
-    return this.#sellIn.value
-  }
-
-  set sellIn( value: number ) {
-    this.#sellIn = new SellIn( value );
-  }
-
-  get quality(): number {
-    return this.#quality.value
-  }
-
-  set quality( value: number ) {
-    this.#quality = new Quality( value );
+  isBackstageTicket(): boolean {
+    return this.#BACKSTAGE_TICKET === this.#value
   }
 
 }

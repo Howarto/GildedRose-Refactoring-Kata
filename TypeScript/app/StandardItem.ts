@@ -1,12 +1,12 @@
-import { Item, Quality, SellIn } from "./Item";
+import { Item, Name, Quality, SellIn } from "./Item";
 
-export class BackstageTicket implements Item {
-  #name: string;
+export class StandardItem implements Item {
+  #name: Name;
   #sellIn: SellIn;
   #quality: Quality;
 
   constructor( name: string, sellIn: number, quality: number ) {
-    this.#name = name
+    this.#name = new Name( name )
     this.#sellIn = new SellIn( sellIn )
     this.#quality = new Quality( quality )
   }
@@ -16,29 +16,19 @@ export class BackstageTicket implements Item {
    */
   update(): void {
     this.#decrementSellIn();
-
-    if ( this.sellIn <= 0 ) {
-      this.quality = 0
-    }
-    else if ( this.sellIn <= 5 ) {
-      this.#incrementQuality( 3 )
-    }
-    else if ( this.sellIn <= 10 ) {
-      this.#incrementQuality( 2 )
-    }
-
+    this.#decrementQuality();
   }
 
   #decrementSellIn = () => {
     this.#sellIn = this.#sellIn.decrement()
   }
 
-  #incrementQuality = ( value: number ) => {
-    this.#quality = this.#quality.incrementValue( value )
+  #decrementQuality = () => {
+    this.#quality = this.#quality.decrement()
   }
 
   get name(): string {
-    return this.#name
+    return this.#name.value
   }
 
   get sellIn(): number {

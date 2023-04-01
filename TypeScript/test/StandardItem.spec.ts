@@ -1,17 +1,17 @@
-import { Item } from "@/Item"
+import { StandardItem } from "@/StandardItem";
 
-describe( 'Item', () =>{
+describe( 'StandardItem', () =>{
 
   it( 'throws error on quality less than 0', () => {
-    expect( () => new Item( 'item', 0, -1 ) ).toThrowError();
+    expect( () => new StandardItem( 'item', 0, -1 ) ).toThrowError();
   } )
 
   it( 'throws error on quality more than 50', () => {
-    expect( () => new Item( 'item', 0, 51 ) ).toThrowError();
+    expect( () => new StandardItem( 'item', 0, 51 ) ).toThrowError();
   } )
 
   it( 'updates', () => {
-    const item = new Item( 'item', 1, 1 )
+    const item = new StandardItem( 'item', 1, 1 )
 
     item.update()
 
@@ -20,7 +20,7 @@ describe( 'Item', () =>{
   } )
 
   it( 'don\'t decrease quality if it has currently the minimum value', () => {
-    const item = new Item( 'item', 1, 0 )
+    const item = new StandardItem( 'item', 1, 0 )
 
     item.update()
 

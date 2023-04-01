@@ -1,6 +1,6 @@
-import { IItem, Quality, SellIn } from "./Item";
+import { Item, Quality, SellIn } from "./Item";
 
-export class Sulfuras implements IItem {
+export class Sulfuras implements Item {
   #name: string;
   #sellIn: SellIn;
   #quality: Quality;

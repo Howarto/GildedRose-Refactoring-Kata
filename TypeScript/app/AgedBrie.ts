@@ -1,6 +1,6 @@
-import { IItem, Quality, SellIn } from "./Item";
+import { Item, Quality, SellIn } from "./Item";
 
-export class AgedBrie implements IItem {
+export class AgedBrie implements Item {
   #name: string;
   #sellIn: SellIn;
   #quality: Quality;
