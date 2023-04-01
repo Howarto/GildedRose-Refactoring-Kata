@@ -1,27 +1,30 @@
-import { Item, Quality, SellIn } from "./Item";
+import { Item } from "./Item";
+import { ItemName } from "./ItemName";
+import { ItemQuality } from "./ItemQuality";
+import { ItemSellIn } from "./ItemSellIn";
 
 export class AgedBrie implements Item {
-  #name: string;
-  #sellIn: SellIn;
-  #quality: Quality;
+  #name: ItemName;
+  #sellIn: ItemSellIn;
+  #quality: ItemQuality;
 
   constructor( name: string, sellIn: number, quality: number ) {
-    this.#name = name
-    this.#sellIn = new SellIn( sellIn )
-    this.#quality = new Quality( quality )
+    this.#name = new ItemName( name )
+    this.#sellIn = new ItemSellIn( sellIn )
+    this.#quality = new ItemQuality( quality )
   }
 
   /**
    * Updates the state due to a day passed.
    */
   update(): void {
+    this.#decrementSellIn();
+
     this.#incrementQuality();
 
     if ( this.sellIn <= 0 ) {
       this.#incrementQuality();
     }
-
-    this.#decrementSellIn();
   }
 
   #decrementSellIn = () => {
@@ -33,7 +36,7 @@ export class AgedBrie implements Item {
   }
 
   get name(): string {
-    return this.#name
+    return this.#name.value
   }
 
   get sellIn(): number {
@@ -41,7 +44,7 @@ export class AgedBrie implements Item {
   }
 
   set sellIn( value: number ) {
-    this.#sellIn = new SellIn( value );
+    this.#sellIn = new ItemSellIn( value );
   }
 
   get quality(): number {
@@ -49,7 +52,7 @@ export class AgedBrie implements Item {
   }
 
   set quality( value: number ) {
-    this.#quality = new Quality( value );
+    this.#quality = new ItemQuality( value );
   }
 
 }

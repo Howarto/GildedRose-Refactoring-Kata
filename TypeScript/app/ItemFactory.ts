@@ -1,11 +1,11 @@
 import { AgedBrie } from "./AgedBrie"
 import { BackstageTicket } from "./BackstageTicket"
-import { Name } from "./Item"
+import { ItemName } from "./ItemName"
 import { StandardItem } from "./StandardItem"
 import { Sulfuras } from "./Sulfuras"
 
 export function ItemFactory( name: string, sellIn: number, quality: number ) {
-  const itemName = new Name( name )
+  const itemName = new ItemName( name )
 
   if ( itemName.isAgedBrie() ) return new AgedBrie( name, sellIn, quality )
 

@@ -3,7 +3,7 @@ import { AgedBrie } from "@/AgedBrie"
 describe( 'AgedBrie', () =>{
 
   it( 'increments the quality by one', () => {
-    const item = new AgedBrie( 'item', 1, 0 )
+    const item = new AgedBrie( 'item', 2, 0 )
     item.update()
     expect( item.quality ).toBe( 1 )
   } )
