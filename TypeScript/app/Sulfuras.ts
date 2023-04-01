@@ -27,16 +27,8 @@ export class Sulfuras implements Item {
     return this.#sellIn.value
   }
 
-  set sellIn( value: number ) {
-    this.#sellIn = new ItemSellIn( value );
-  }
-
   get quality(): number {
     return this.#quality.value
-  }
-
-  set quality( value: number ) {
-    this.#quality = new ItemQuality( value );
   }
 
 }

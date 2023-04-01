@@ -21,7 +21,7 @@ export class BackstageTicket implements Item {
     this.#decrementSellIn();
 
     if ( this.sellIn <= 0 ) {
-      this.quality = 0
+      this.#quality = new ItemQuality( 0 )
     }
     else if ( this.sellIn <= 5 ) {
       this.#incrementQuality( 3 )
@@ -48,16 +48,8 @@ export class BackstageTicket implements Item {
     return this.#sellIn.value
   }
 
-  set sellIn( value: number ) {
-    this.#sellIn = new ItemSellIn( value );
-  }
-
   get quality(): number {
     return this.#quality.value
-  }
-
-  set quality( value: number ) {
-    this.#quality = new ItemQuality( value );
   }
 
 }
