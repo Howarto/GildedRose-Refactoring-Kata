@@ -1,59 +1,61 @@
 import { Item } from "./Item";
 
 export class GildedRose {
-  items: Array<Item>;
+  itemArray: Array<Item>;
 
   constructor(items = [] as Array<Item>) {
-    this.items = items;
+    this.itemArray = items;
   }
 
   updateQuality() {
-    for (let i = 0; i < this.items.length; i++) {
-      if (this.items[i].name != 'Aged Brie' && this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-        if (this.items[i].quality > 0) {
-          if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-            this.items[i].quality = this.items[i].quality - 1
-          }
-        }
-      } else {
-        if (this.items[i].quality < 50) {
-          this.items[i].quality = this.items[i].quality + 1
-          if (this.items[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].sellIn < 11) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
-            }
-            if (this.items[i].sellIn < 6) {
-              if (this.items[i].quality < 50) {
-                this.items[i].quality = this.items[i].quality + 1
-              }
-            }
-          }
-        }
-      }
-      if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-        this.items[i].sellIn = this.items[i].sellIn - 1;
-      }
-      if (this.items[i].sellIn < 0) {
-        if (this.items[i].name != 'Aged Brie') {
-          if (this.items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
-            if (this.items[i].quality > 0) {
-              if (this.items[i].name != 'Sulfuras, Hand of Ragnaros') {
-                this.items[i].quality = this.items[i].quality - 1
-              }
-            }
-          } else {
-            this.items[i].quality = this.items[i].quality - this.items[i].quality
-          }
-        } else {
-          if (this.items[i].quality < 50) {
-            this.items[i].quality = this.items[i].quality + 1
-          }
-        }
-      }
-    }
+    this.itemArray.forEach( item => item.update() )
 
-    return this.items;
+    // for (let i = 0; i < this.itemArray.length; i++) {
+    //   if (this.itemArray[i].name != 'Aged Brie' && this.itemArray[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
+    //     if (this.itemArray[i].quality > 0) {
+    //       if (this.itemArray[i].name != 'Sulfuras, Hand of Ragnaros') {
+    //         this.itemArray[i].quality = this.itemArray[i].quality - 1
+    //       }
+    //     }
+    //   } else {
+    //     if (this.itemArray[i].quality < 50) {
+    //       this.itemArray[i].quality = this.itemArray[i].quality + 1
+    //       if (this.itemArray[i].name == 'Backstage passes to a TAFKAL80ETC concert') {
+    //         if (this.itemArray[i].sellIn < 11) {
+    //           if (this.itemArray[i].quality < 50) {
+    //             this.itemArray[i].quality = this.itemArray[i].quality + 1
+    //           }
+    //         }
+    //         if (this.itemArray[i].sellIn < 6) {
+    //           if (this.itemArray[i].quality < 50) {
+    //             this.itemArray[i].quality = this.itemArray[i].quality + 1
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    //   if (this.itemArray[i].name != 'Sulfuras, Hand of Ragnaros') {
+    //     this.itemArray[i].sellIn = this.itemArray[i].sellIn - 1;
+    //   }
+    //   if (this.itemArray[i].sellIn < 0) {
+    //     if (this.itemArray[i].name != 'Aged Brie') {
+    //       if (this.itemArray[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
+    //         if (this.itemArray[i].quality > 0) {
+    //           if (this.itemArray[i].name != 'Sulfuras, Hand of Ragnaros') {
+    //             this.itemArray[i].quality = this.itemArray[i].quality - 1
+    //           }
+    //         }
+    //       } else {
+    //         this.itemArray[i].quality = this.itemArray[i].quality - this.itemArray[i].quality
+    //       }
+    //     } else {
+    //       if (this.itemArray[i].quality < 50) {
+    //         this.itemArray[i].quality = this.itemArray[i].quality + 1
+    //       }
+    //     }
+    //   }
+    // }
+
+    return this.itemArray;
   }
 }
