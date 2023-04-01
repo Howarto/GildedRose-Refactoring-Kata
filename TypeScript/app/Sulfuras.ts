@@ -14,9 +14,6 @@ export class Sulfuras implements Item {
     this.#quality = new ItemQuality( quality )
   }
 
-  /**
-   * Updates the state due to a day passed.
-   */
   update(): void { /* Do nothing. */}
 
   get name(): string {

@@ -14,9 +14,6 @@ export class BackstageTicket implements Item {
     this.#quality = new ItemQuality( quality )
   }
 
-  /**
-   * Updates the state due to a day passed.
-   */
   update(): void {
     this.#decrementSellIn();
 
